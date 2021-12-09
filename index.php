@@ -19,4 +19,5 @@
         echo "Чаевые: " . $fullTips . "$<br>";
        
         echo "Налог: " . $fullNds . "$<br>";
-?> 
+
+        
