@@ -13,3 +13,5 @@ $person = [
 ];
  echo $person['name'] . '<br>';
  print_r($person);
+
+ $colors = ['red', 'green', 'blue'];
