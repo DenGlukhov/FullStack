@@ -65,15 +65,7 @@ function getCount($str) {
 
 function persistence(int $num): int {
     
-    $mult = 1;
-    /*for ($i = 0; $i < strlen($num); $i++) {
-        if (strlen($num) > 1) {
-            $mult *= $num[$i];
-        } else {
-            return $num[$i];
-        }
-    }*/
-    return $mult;
+  
   }
 
 //Task 7: Get Nth Even Number
@@ -82,6 +74,6 @@ function persistence(int $num): int {
 function nthEven($n) {
     
     if ($n > 0) {
-        return $result = $n * 2 - 2;
+        return $n * 2 - 2;
     }
   }
