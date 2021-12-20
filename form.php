@@ -1,7 +1,7 @@
 <?php
 
 $user = 'root';
-$password = 'a4techX7gaming';
+$password = 'Rootadmin127';
 $pdo = new Pdo('mysql:dbname=fullstack;host=127.0.0.1', $user, $password);
 
 $name = $_POST['name'];
