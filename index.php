@@ -43,12 +43,16 @@ foreach ($users as $user) {
     echo "
     <tr>
         <td class='text-center'>{$user['id']}</td>
-        <td class='text-center'>{$user['login']}</td>
+        <td class='text-center'> <a href='pages/user.php?id={$user['id']}'>
+            {$user['login']}
+                </a>
+            </td>
         <td>{$user['name']}</td>
         <td class='text-center'>{$city}</td>
         <td class='text-center'>
-            <form method='post' action='del_user.php'> 
-                <button class='btn btn-danger'>X</button>
+            <form method='post' action='actions/del_user.php'> 
+                <input hidden name='id' value={$user['id']}>
+                <button type='submit'class='btn btn-danger'>X</button>
             </form>
         </td>
     </tr>
