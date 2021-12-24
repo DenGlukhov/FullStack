@@ -11,41 +11,49 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   </head>
     <body>
-            <div class='container mt-5'> 
+        <div class='container mt-5'> 
 
-<?php
+            <?php
 
-$user = 'root';
-$password = 'Rootadmin127';
-$pdo = new Pdo('mysql:dbname=fullstack;host=127.0.0.1', $user, $password);
+            $user = 'root';
+            //$password = 'Rootadmin127';
+            $pdo = new Pdo('mysql:dbname=fullstack;host=127.0.0.1', $user);
 
-$userId = $_GET['id'];
+            $userId = $_GET['id'];
 
-$query = "SELECT * FROM users WHERE id = :id";
-$res = $pdo->prepare($query);
-$res->execute([
-    ':id' => $userId,
-]);
+            $query = "SELECT * FROM users WHERE id = :id";
+            $res = $pdo->prepare($query);
+            $res->execute([
+                ':id' => $userId,
+            ]);
 
-$user = $res->fetch();
+            $user = $res->fetch();
 
-if ($user) {
+            if ($user) {
 
-$query = "SELECT * FROM cities";
-$res = $pdo->query($query);
-$cities = $res->fetchAll();
+            $query = "SELECT * FROM cities";
+            $res = $pdo->query($query);
+            $cities = $res->fetchAll();
 
-if (isset($_SESSION['error'])) {
-    echo 
-    "
-    <div class='alert alert-danger' role='alert'>
-    {$_SESSION['error']}
-    </div>
-    ";
-    unset($_SESSION['error']);
-}
+            if (isset($_SESSION['error'])) {
+                echo 
+                "
+                <div class='alert alert-danger' role='alert'>
+                {$_SESSION['error']}
+                </div>
+                ";
+                unset($_SESSION['error']);
+            } elseif ($_SESSION['success']) {
+                echo 
+                "
+                <div class='alert alert-success' role='alert'>
+                {$_SESSION['success']}
+                </div>
+                ";
+                unset($_SESSION['success']);
+            }
 
-?>
+            ?>
                 <form method='post' action='../actions/update_user.php'>
                     <label>Имя</label>
                     <input name='id' hidden value='<?=$user['id']?>'>
@@ -80,7 +88,7 @@ if (isset($_SESSION['error'])) {
 
                 ?>
 
-            </div>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>
 </html>

@@ -1,8 +1,8 @@
 <?php
 
 $user = 'root';
-$password = 'Rootadmin127';
-$pdo = new Pdo('mysql:dbname=fullstack;host=127.0.0.1', $user, $password);
+//$password = 'Rootadmin127';
+$pdo = new Pdo('mysql:dbname=fullstack;host=127.0.0.1', $user);
 
 $name = $_POST['name'];
 $login = $_POST['login'];
@@ -17,4 +17,5 @@ $res->execute([
     ':password' => $password,
     ':city_id' => $city_id
 ]);
+
 header('location: index.php');

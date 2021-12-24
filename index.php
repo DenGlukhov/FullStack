@@ -11,8 +11,8 @@
 <?php
    
 $user = 'root';
-$password = 'Rootadmin127';
-$pdo = new Pdo('mysql:dbname=fullstack;host=127.0.0.1', $user, $password);
+//$password = 'Rootadmin127';
+$pdo = new Pdo('mysql:dbname=fullstack;host=127.0.0.1', $user);
 
 $query = "SELECT * FROM users";
 $res = $pdo->query($query);
