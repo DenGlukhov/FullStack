@@ -1,17 +1,24 @@
- <?php
+<?php
     $title = 'Регистрация'; //Наименование страницы, передается в "header.php".
     
     require_once '../templates/header.php';
 
-    // $query = "SELECT * FROM users";
-    // $res = $pdo->query($query);
-    // $users = $res->fetchAll();
+    $query = "SELECT * FROM cities";
+    $res = $pdo->query($query);
+    $cities = $res->fetchAll();
 
-    // $query = "SELECT * FROM cities";
-    // $res = $pdo->query($query);
-    // $cities = $res->fetchAll();
+    if (isset($_SESSION['registerError'])) {
+        echo 
+        "
+        <div align='center' class='alert alert-warning' role='alert'>
+        {$_SESSION['registerError']}
+        </div>
+        ";
+        unset($_SESSION['registerError']);
+    }
+
 ?> 
-    <form method="POST" action="../form.php">
+    <form method="POST" action="../actions/register.php">
         <label>Имя</label>
         <input required class="form-control mb-2" placeholder="Укажите имя" name='name'>
         <label>Логин</label>
@@ -35,4 +42,5 @@
 
 <?php
 require_once '../templates/footer.php';
+
 

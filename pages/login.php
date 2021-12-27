@@ -1,7 +1,18 @@
 
 <?php
 $title = 'Авторизация'; //Наименование страницы, передается в "header.php".
-require_once '../templates/header.php'
+require_once '../templates/header.php';
+
+    if (isset($_SESSION['loginError'])) {
+    echo 
+    "
+    <div align='center' class='alert alert-warning' role='alert'>
+        Неверные данные
+    </div>
+    ";
+    unset($_SESSION['loginError']);
+}
+
 ?>
 
 <form method="POST" action="../actions/login.php">
