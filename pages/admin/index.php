@@ -14,9 +14,8 @@ foreach ($links as $key => $link) {
     <div class='col-4'>
         <div class='card w-100'>
             <div class='card-body'>
-                <h5 class='card-title'>{$key}</h5>
-                <p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href='{$link}' class='btn btn-primary'>Перейти</a>
+                <h5 class='card-title text-center'>{$key}</h5>
+                <a href='{$link}' class='btn btn-primary w-100'>Перейти</a>
             </div>
         </div>
     </div>

@@ -27,7 +27,7 @@
                 </div>
                 ";
                 unset($_SESSION['error']);
-            } elseif ($_SESSION['success']) {
+            } elseif (isset($_SESSION['success'])) {
                 echo 
                 "
                 <div id='alertSuccess' align='center' class='alert alert-success' role='alert'>

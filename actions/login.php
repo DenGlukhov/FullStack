@@ -8,7 +8,7 @@ $query = 'SELECT * FROM users WHERE login = :login AND password = :password';
 $res = $pdo->prepare($query);
 $res->execute([
     ':login' => $login,
-    ':password' => ($password),
+    ':password' => $password,
 ]);
 
 $user = $res->fetch();

@@ -31,14 +31,14 @@ foreach ($users as $user) {
     echo "
     <tr>
         <td class='text-center'>{$user['id']}</td>
-        <td class='text-center'> <a href='pages/user.php?id={$user['id']}'>
+        <td class='text-center'> <a href='/pages/user.php?id={$user['id']}'>
             {$user['login']}
                 </a>
             </td>
         <td>{$user['name']}</td>
         <td class='text-center'>{$city}</td>
         <td class='text-center'>
-            <form method='post' action='actions/del_user.php'> 
+            <form method='post' action='/actions/admin/del_user.php'> 
                 <input hidden name='id' value={$user['id']}>
                 <button type='submit'class='btn btn-danger'>X</button>
             </form>
@@ -51,5 +51,15 @@ echo "
         </tbody>
         </table>
 ";
+
+if (isset($_SESSION['delError'])) {
+    echo 
+    "
+    <div align='center' class='alert alert-warning' role='alert'>
+    Пользователя с меткой 'admin' удалить нельзя!
+    </div>
+    ";
+    unset($_SESSION['delError']);
+}
 
 require_once '../../templates/footer.php';

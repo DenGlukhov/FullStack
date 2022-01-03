@@ -1,5 +1,5 @@
 <?php
-require_once '../config.php';
+require_once '../../config.php';
 
 $userId = $_POST['id'];
 
@@ -8,4 +8,5 @@ $res = $pdo->prepare($query);
 $res->execute([
     ':id' => $userId
     ]);
-header('location: ../index.php');
+header('location: /pages/admin/users.php');
+
