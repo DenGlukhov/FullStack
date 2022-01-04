@@ -10,14 +10,38 @@ require $_SERVER['DOCUMENT_ROOT'] . '/config.php';
         <?= $title ?>
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <script
         src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
         crossorigin="anonymous">
         </script>
+        <style>
+        .card-image {
+            margin-top: 10px;
+            height: 180px;
+        }
+        .card-price {
+            text-align: center;
+            font-size: 23px;
+            border-bottom: 2px solid grey;
+        }
+        .card-image img {
+            width: auto;
+            height: 100%;
+        }
+        .btn-product-add, .btn-product-remove {
+            width: 37px;
+        }
+        .card-basket-buttons {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .card-basket-quantity {
+            line-height: 38px;
+        }
+        </style>
 </head>
     <body>
         <div class='container mt-5'> 
@@ -42,6 +66,9 @@ require $_SERVER['DOCUMENT_ROOT'] . '/config.php';
                                 <a class="nav-link <?= $_SERVER['PHP_SELF'] == '/pages/register.php' ? 'active' : '' ?>" href="/pages/register.php">Регистрация</a>
                             </li>
                         <?php } else { ?>
+                            <li class="nav-item">
+                                <a class="nav-link <?= $_SERVER['PHP_SELF'] == '/pages/basket.php' ? 'active' : '' ?>" href="/pages/basket.php">Корзина(<?= array_sum($_SESSION['products'] ?? []) ?>)</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <?= $_SESSION['user']['login']; ?>

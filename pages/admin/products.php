@@ -2,7 +2,7 @@
 $title = 'Список продуктов'; //Наименование страницы, передается в "header.php".
 require_once '../../templates/header.php';
 
-$query = "SELECT * FROM products";
+$query = "SELECT p.id, p.name, p.price, p.description, p.picture, c.name as category FROM products as p JOIN categories as c ON p.category_id = c.id";
 $res = $pdo->query($query);
 $products = $res->fetchAll();
 
@@ -79,7 +79,7 @@ if (isset($_SESSION['createProductsErrors'])) {
                 <td>{$product['name']}</td>
                 <td>{$product['description']}</td>
                 <td>{$product['price']}</td>
-                <td>{$product['category_id']}</td>
+                <td>{$product['category']}</td>
                 <td> 
                     <img height='100' src='{$path}{$product['picture']}'> 
                 </td>
