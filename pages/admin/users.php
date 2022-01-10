@@ -2,6 +2,8 @@
 $title = 'Список пользователей'; //Наименование страницы, передается в "header.php".
 require_once '../../templates/header.php';
 
+$_SESSION['delError'];
+
 $query = "SELECT * FROM users";
 $res = $pdo->query($query);
 $users = $res->fetchAll();
@@ -56,7 +58,7 @@ if (isset($_SESSION['delError'])) {
     echo 
     "
     <div align='center' class='alert alert-warning' role='alert'>
-    Пользователя с меткой 'admin' удалить нельзя!
+    Пользователя с активной сессией удалить нельзя!
     </div>
     ";
     unset($_SESSION['delError']);

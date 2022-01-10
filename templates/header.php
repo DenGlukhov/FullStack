@@ -41,6 +41,9 @@ require $_SERVER['DOCUMENT_ROOT'] . '/config.php';
         .card-basket-quantity {
             line-height: 38px;
         }
+        .text-right {
+            text-align: right;
+        }
         </style>
 </head>
     <body>
