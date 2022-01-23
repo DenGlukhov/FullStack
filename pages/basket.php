@@ -6,15 +6,16 @@ require_once '../templates/header.php';
 $basketProducts = $_SESSION['products'];
 $productsIds = array_keys($basketProducts);
 
-$query = "SELECT * FROM products WHERE id IN (1,2,3)"; // Необходимо поправить запрос,т.к. некорректно отрабатывает. На след. занятии.
+$placeHolders = implode(',', array_fill(0, count($productsIds), '?'));
+$query = "SELECT * FROM products WHERE id IN ($placeHolders)"; 
 
 $res = $pdo->prepare($query);
-$res->execute([
-    ':ids' => implode($productsIds),
-]);
+$res->execute($productsIds);
 $products = $res->fetchAll();
 echo'<pre>';
 print_r($_SESSION);
+var_dump($productsIds);
+var_dump($res);
 ?>
 
 <table class="table table-bordered mt-2 w-100">
